@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACRUX SOUTHERN CROSS</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <canvas id="bgCanvas"></canvas>
+
+  <h3>Offensive Security & Red Teaming</h3>
+
+  <img src="https://i.pinimg.com/originals/b1/5b/d5/b15bd596014d9d9310e59b07b85da550.gif" alt="Portfolio GIF">
+
+  <div class="description">
+    Focused on pentesting and developing tools to identify and fix security vulnerabilities. Passionate about building
+    efficient, reliable solutions for cybersecurity challenges, exploring new attack surfaces, analyzing complex systems,
+    and continuously improving defensive strategies to protect critical assets in dynamic environments.
+    <br><br>
+    I specialize in offensive security, exploit research, and the development of custom tooling to support red-teaming
+    operations. My work focuses on identifying real-world weaknesses, bypassing modern defenses, and understanding how
+    attackers operate at a technical level.
+    <br><br>
+    I aim to build reliable, efficient and stealth-oriented tools that enhance reconnaissance, exploitation, and post-
+    exploitation workflows while maintaining operational security and precision.
+    <br><br>
+    Focused on pentesting and developing tools to identify and fix security vulnerabilities. Passionate about building
+    efficient, reliable solutions for cybersecurity challenges, exploring new attack surfaces, analyzing complex systems,
+    and continuously improving defensive strategies to protect critical assets in dynamic environments.
+    <br><br>
+    I specialize in offensive security, exploit research, and the development of custom tooling to support red-teaming
+    operations. My work focuses on identifying real-world weaknesses, bypassing modern defenses, and understanding how
+    attackers operate at a technical level.
+    <br><br>
+    I aim to build reliable, efficient and stealth-oriented tools that enhance reconnaissance, exploitation, and post-
+    exploitation workflows while maintaining operational security and precision.
+  </div>
+
+  <div class="buttons">
+    <a href="/blog.html" class="button blog-btn">
+      Read My Blog
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="16" height="16">
+        <path d="M5 12h14" />
+        <path d="m12 5 7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+
+  <footer>
+    © 2026 ACRUX | All rights reserved
+  </footer>
+
+  <script>
+    const canvas = document.getElementById("bgCanvas");
+    const ctx = canvas.getContext("2d");
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    const particles = Array.from({ length: 160 }).map(() => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 2 + 0.5,
+      speedY: Math.random() * 0.7 + 0.2,
+      speedX: Math.random() * 0.3 - 0.15,
+      color: "#fff"
+    }));
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+
+        p.y += p.speedY;
+        p.x += p.speedX;
+
+        if (p.y > canvas.height) p.y = -5;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.x < 0) p.x = canvas.width;
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
+
+</body>
+
+</html>
