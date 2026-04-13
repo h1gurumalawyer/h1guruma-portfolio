@@ -15,9 +15,12 @@
         body {
             margin: 0;
             overflow: hidden;
-            background-color: black;
+            background-color: rgb(255, 255, 255);
             font-family: Arial, sans-serif;
-            color: white;
+            color: rgb(0, 0, 0);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Canvas del fondo */
@@ -40,22 +43,7 @@
             align-items: center;
             gap: 1rem;
             padding: 2rem;
-            min-height: 100vh;
-        }
-
-        pre {
-            font-family: 'JetBrains Mono', monospace;
-            color: #fff;
-            font-size: 0.75rem;
-            line-height: 1.1;
-            letter-spacing: 0.5px;
-            max-height: 300px;
-            /* Limita la altura */
-            overflow: hidden;
-            /* Oculta exceso */
-            user-select: none;
-            margin: 0;
-            /* Elimina márgenes extra */
+            flex: 1;
         }
 
         /* BOTONES */
@@ -83,7 +71,7 @@
 
         .projects-btn {
             background-color: #7c3aed;
-            color: #fff;
+            color: #ffffff;
         }
 
         .projects-btn:hover {
@@ -92,7 +80,7 @@
 
         .blog-btn {
             background-color: transparent;
-            color: #fff;
+            color: #000000;
             border: 2px solid #4b5563;
         }
 
@@ -117,8 +105,9 @@
             gap: 0.8rem;
             flex-wrap: wrap;
             justify-content: center;
-            margin-top: 0rem;
+            margin-top: 1rem;
             align-items: center;
+            filter: drop-shadow(0 2px 4px rgba(10, 9, 9, 0.719));
         }
 
         h3 span {
@@ -132,23 +121,26 @@
             max-width: 800px;
             margin-top: 0.5rem;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            color: #cccccc;
+            font-size: 1rem;
+            color: #080707;
             line-height: 1.5;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.658);
+            font-weight: 500;
         }
 
         /* GIF */
         img {
-            max-width: 400px;
+            max-width: 450px;
             width: 50%;
             margin-top: 1rem;
         }
 
         footer {
-            margin-top: 1rem;
+            margin-top: auto;
+            padding: 1rem 2rem;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.8rem;
-            color: #555;
+            color: #292626;
             /* Gris tenue */
             text-align: center;
         }
@@ -165,6 +157,7 @@
         .icons img {
             width: 48px;
             height: 48px;
+            filter: drop-shadow(0 2px 4px rgba(10, 9, 9, 0.589));
         }
     </style>
 </head>
@@ -175,18 +168,10 @@
     <canvas id="bgCanvas"></canvas>
 
     <div class="content">
-        <pre style="text-align:center;color:white;">
-░██     ░██                          ░██████░██                       ░███                                              
-░██     ░██                            ░██  ░██                      ░██░██                                             
-░██     ░██  ░███████  ░██    ░██      ░██  ░██ ░█████████████      ░██  ░██   ░███████  ░██░████ ░██    ░██ ░██    ░██ 
-░██████████ ░██    ░██ ░██    ░██      ░██      ░██   ░██   ░██    ░█████████ ░██    ░██ ░███     ░██    ░██  ░██  ░██  
-░██     ░██ ░█████████ ░██    ░██      ░██      ░██   ░██   ░██    ░██    ░██ ░██        ░██      ░██    ░██   ░█████   
-░██     ░██ ░██        ░██   ░███      ░██      ░██   ░██   ░██    ░██    ░██ ░██    ░██ ░██      ░██   ░███  ░██  ░██  
-░██     ░██  ░███████   ░█████░██    ░██████    ░██   ░██   ░██    ░██    ░██  ░███████  ░██       ░█████░██ ░██    ░██ 
-                              ░██                                                                                       
-                        ░███████                                                                                        
-                                                                                                                        
-    </pre>
+
+        <!-- GIF -->
+        <img src="https://i.pinimg.com/originals/d9/18/dd/d918ddd088942a4b4c3c58ff5371bc2f.gif" alt="Portfolio GIF">
+
 
         <!-- TITULO Y PERFIL -->
         <h3 style="font-family: 'JetBrains Mono', monospace; font-weight: 400;">
@@ -197,8 +182,29 @@
             </span> Developer
         </h3>
 
+        <!-- ICONOS -->
+        <div class="icons">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/debian/debian-original.svg"
+                alt="Debian">
+            <img src="https://cdn.simpleicons.org/kalilinux/557C94" alt="Kali Linux">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
+                alt="Java">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
+                alt="Python">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg"
+                alt="GitHub">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg"
+                alt="VS Code">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt="Git">
+            <img src="https://cdn.simpleicons.org/ubuntu/557C94" alt="Ubuntu">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/archlinux/archlinux-original.svg"
+                alt="Arch Linux">
+        </div>
+
         <!-- DESCRIPCIÓN -->
         <div class="description">
+            Hi I'm Acrux 
+            <br></br>
             Focused on pentesting and developing tools to identify and fix security vulnerabilities. Passionate about
             building
             efficient, reliable solutions for cybersecurity challenges, exploring new attack surfaces, analyzing complex
@@ -224,33 +230,21 @@
                     <path d="m12 5 7 7-7 7" />
                 </svg>
             </a>
-        </div>
 
-        <!-- GIF -->
-        <img src="https://i.pinimg.com/originals/d9/18/dd/d918ddd088942a4b4c3c58ff5371bc2f.gif" alt="Portfolio GIF">
-
-        <!-- ICONOS -->
-        <div class="icons">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/debian/debian-original.svg"
-                alt="Debian">
-            <img src="https://cdn.simpleicons.org/kalilinux/557C94" alt="Kali Linux">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
-                alt="Java">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
-                alt="Python">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg"
-                alt="GitHub">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg"
-                alt="VS Code">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt="Git">
-            <img src="https://cdn.simpleicons.org/ubuntu/557C94" alt="Ubuntu">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/archlinux/archlinux-original.svg"
-                alt="Arch Linux">
+            <a href="about-me.html" class="button blog-btn">
+                About Me
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                </svg>
+            </a>
         </div>
-        <footer>
-            © 2026 ACRUX | All rights reserved
-        </footer>
+        
     </div>
+
+    <footer>
+        © 2026 ACRUX | All rights reserved
+    </footer>
 
     <!-- JAVASCRIPT DEL BACKGROUND -->
     <script>
@@ -276,7 +270,7 @@
         // Crear partículas
         function init() {
             particles = [];
-            for (let i = 0; i < 120; i++) {
+            for (let i = 0; i < 210; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
@@ -295,7 +289,7 @@
                     let dist = dx * dx + dy * dy;
 
                     if (dist < 10000) {
-                        ctx.strokeStyle = "rgba(255,255,255,0.08)";
+                        ctx.strokeStyle = "rgba(0, 0, 80, 0.15)";
                         ctx.lineWidth = 1;
                         ctx.beginPath();
                         ctx.moveTo(particles[a].x, particles[a].y);
@@ -310,7 +304,7 @@
                 let dist = dx * dx + dy * dy;
 
                 if (dist < 15000) {
-                    ctx.strokeStyle = "rgba(255,255,255,0.2)";
+                    ctx.strokeStyle = "rgba(0, 0, 80, 0.15)";
                     ctx.beginPath();
                     ctx.moveTo(particles[a].x, particles[a].y);
                     ctx.lineTo(mouse.x, mouse.y);
@@ -332,7 +326,7 @@
                 if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
                 // dibujar punto
-                ctx.fillStyle = "#ffffff";
+                ctx.fillStyle = "#4A4242";
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
                 ctx.fill();
