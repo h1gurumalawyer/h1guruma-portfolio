@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACRUX SOUTHERN CROSS</title>
+
+  <!-- Fuentes -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: black;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    /* Canvas del fondo */
+    #bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 2rem;
+      min-height: 100vh;
+      padding-bottom: 3rem;
+    }
+
+    pre {
+      font-family: 'JetBrains Mono', monospace;
+      color: #fff;
+      font-size: 0.75rem;
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+      max-height: 300px;
+      overflow: hidden;
+      user-select: none;
+      margin: 0;
+    }
+
+    /* BOTONES */
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .button {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: 0.3rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .projects-btn {
+      background-color: #7c3aed;
+      color: #fff;
+    }
+
+    .projects-btn:hover {
+      background-color: #9d4edd;
+    }
+
+    .blog-btn {
+      background-color: transparent;
+      color: #fff;
+      border: 2px solid #4b5563;
+    }
+
+    .blog-btn:hover {
+      border-color: #6b7280;
+    }
+
+    .button svg {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* TITULO Y PERFIL */
+    h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      font-size: 1.6rem;
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 0.5rem;
+      align-items: center;
+    }
+
+    h3 span {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    /* DESCRIPCIÓN */
+    .description {
+      max-width: 800px;
+      margin-top: -2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: #cccccc;
+      line-height: 1.5;
+    }
+
+    /* GIF */
+    img {
+      max-width: 450px;
+      width: 90%;
+      margin-top: 2rem;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: #555;
+      text-align: center;
+
+      padding: 0.5rem 0;
+      background: rgba(0, 0, 0, 0.6);
+      /* opcional: efecto glass */
+      backdrop-filter: blur(4px);
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Canvas del background -->
+  <canvas id="bgCanvas"></canvas>
+
+  <div class="content">
+    <!-- GIF -->
+    <img src="https://i.pinimg.com/originals/d9/18/dd/d918ddd088942a4b4c3c58ff5371bc2f.gif" alt="Portfolio GIF">
+
+
+    <!-- TITULO Y PERFIL -->
+    <h3 style="font-family: 'JetBrains Mono', monospace; font-weight: 400;">
+      <span style="color:#f31313;">>_</span> About Me &nbsp;&nbsp;
+    </h3>
+
+    <div class="description">
+      Self-taught pentester and developer driven by curiosity and a constant need to understand how systems really work
+      — and how they break.
+      I focus on identifying vulnerabilities, exploiting real-world scenarios, and building tools that automate and
+      simplify complex security tasks.
+      <br></br>
+      My workflow moves through enumeration, analysis, exploitation, and post-exploitation, always aiming to go deeper
+      than the obvious.
+      I spend a lot of time in CTFs, labs, and hands-on environments where I can sharpen both my technical skills and my
+      mindset as an attacker.
+      <br></br>
+      I don’t just look for vulnerabilities — I aim to understand the logic behind them.
+    </div>
+
+
+    <br>
+
+    <!-- BOTONES -->
+    <div class="buttons">
+      <a href="https://github.com/acruxsoutherncross" class="button projects-btn">
+        View My Projects
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      </a>
+
+      <a href="blog.html" class="button blog-btn">
+        Read My Blog
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      </a>
+
+      <a href="index.html" class="button blog-btn">
+        Back to home
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+
+    <footer>
+      © 2026 ACRUX | All rights reserved
+    </footer>
+  </div>
+
+  <!-- JAVASCRIPT DEL BACKGROUND -->
+  <script>
+    const canvas = document.getElementById("bgCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let particles = [];
+    const mouse = { x: null, y: null };
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    // Mouse tracking
+    window.addEventListener("mousemove", (e) => {
+      mouse.x = e.x;
+      mouse.y = e.y;
+    });
+
+    // Crear partículas
+    function init() {
+      particles = [];
+      for (let i = 0; i < 120; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: Math.random() * 1 - 0.5,
+          vy: Math.random() * 1 - 0.5
+        });
+      }
+    }
+
+    // Dibujar líneas entre partículas
+    function connect() {
+      for (let a = 0; a < particles.length; a++) {
+        for (let b = a; b < particles.length; b++) {
+          let dx = particles[a].x - particles[b].x;
+          let dy = particles[a].y - particles[b].y;
+          let dist = dx * dx + dy * dy;
+
+          if (dist < 10000) {
+            ctx.strokeStyle = "rgba(255,255,255,0.08)";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particles[a].x, particles[a].y);
+            ctx.lineTo(particles[b].x, particles[b].y);
+            ctx.stroke();
+          }
+        }
+
+        // Conexión con el mouse
+        let dx = particles[a].x - mouse.x;
+        let dy = particles[a].y - mouse.y;
+        let dist = dx * dx + dy * dy;
+
+        if (dist < 15000) {
+          ctx.strokeStyle = "rgba(255,255,255,0.2)";
+          ctx.beginPath();
+          ctx.moveTo(particles[a].x, particles[a].y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Animación
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // rebote
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        // dibujar punto
+        ctx.fillStyle = "#ffffff";
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      connect();
+      requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+  </script>
+</body>
+
+</html>
