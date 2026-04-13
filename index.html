@@ -2,175 +2,180 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ACRUX SOUTHERN CROSS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACRUX SOUTHERN CROSS</title>
 
-  <!-- Fuentes -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap"
-    rel="stylesheet">
+    <!-- Fuentes -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      background-color: black;
-      font-family: Arial, sans-serif;
-      color: white;
-    }
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
 
-    /* Canvas del fondo */
-    #bgCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
+        /* Canvas del fondo */
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
 
-    .content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      padding: 2rem;
-      min-height: 100vh;
-    }
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem;
+            min-height: 100vh;
+        }
 
-    pre {
-      font-family: 'JetBrains Mono', monospace;
-      color: #fff;
-      font-size: 0.75rem;
-      line-height: 1.1;
-      letter-spacing: 0.5px;
-      max-height: 300px; /* Limita la altura */
-      overflow: hidden;  /* Oculta exceso */
-      user-select: none;
-      margin: 0;         /* Elimina márgenes extra */
-    }
+        pre {
+            font-family: 'JetBrains Mono', monospace;
+            color: #fff;
+            font-size: 0.75rem;
+            line-height: 1.1;
+            letter-spacing: 0.5px;
+            max-height: 300px;
+            /* Limita la altura */
+            overflow: hidden;
+            /* Oculta exceso */
+            user-select: none;
+            margin: 0;
+            /* Elimina márgenes extra */
+        }
 
-    /* BOTONES */
-    .buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
+        /* BOTONES */
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
 
-    .button {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      padding: 0.5rem 1rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      border-radius: 0.3rem;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      border: none;
-    }
+        .button {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+        }
 
-    .projects-btn {
-      background-color: #7c3aed;
-      color: #fff;
-    }
+        .projects-btn {
+            background-color: #7c3aed;
+            color: #fff;
+        }
 
-    .projects-btn:hover {
-      background-color: #9d4edd;
-    }
+        .projects-btn:hover {
+            background-color: #9d4edd;
+        }
 
-    .blog-btn {
-      background-color: transparent;
-      color: #fff;
-      border: 2px solid #4b5563;
-    }
+        .blog-btn {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #4b5563;
+        }
 
-    .blog-btn:hover {
-      border-color: #6b7280;
-    }
+        .blog-btn:hover {
+            border-color: #6b7280;
+        }
 
-    .button svg {
-      width: 16px;
-      height: 16px;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
+        .button svg {
+            width: 16px;
+            height: 16px;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
 
-    /* TITULO Y PERFIL */
-    h3 {
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 500;
-      font-size: 1.2rem;
-      display: flex;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 0.5rem;
-      align-items: center;
-    }
+        /* TITULO Y PERFIL */
+        h3 {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            font-size: 1.2rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 0rem;
+            align-items: center;
+        }
 
-    h3 span {
-      display: flex;
-      align-items: center;
-      gap: 0.2rem;
-    }
+        h3 span {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+        }
 
-    /* DESCRIPCIÓN */
-    .description {
-      max-width: 800px;
-      margin-top: 0.5rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.9rem;
-      color: #cccccc;
-      line-height: 1.5;
-    }
+        /* DESCRIPCIÓN */
+        .description {
+            max-width: 800px;
+            margin-top: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #cccccc;
+            line-height: 1.5;
+        }
 
-    /* GIF */
-    img {
-      max-width: 560px;
-      width: 90%;
-      margin-top: 1rem;
-    }
+        /* GIF */
+        img {
+            max-width: 400px;
+            width: 50%;
+            margin-top: 1rem;
+        }
 
-    footer {
-      margin-top: 1rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: #555; /* Gris tenue */
-      text-align: center;
-  }
+        footer {
+            margin-top: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #555;
+            /* Gris tenue */
+            text-align: center;
+        }
 
-    /* ICONOS */
-    .icons {
-      display: flex;
-      gap: 1.4rem;
-      margin-top: 0rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+        /* ICONOS */
+        .icons {
+            display: flex;
+            gap: 1.4rem;
+            margin-top: 0rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-    .icons img {
-      width: 48px;
-      height: 48px;
-    }
-  </style>
+        .icons img {
+            width: 48px;
+            height: 48px;
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- Canvas del background -->
-  <canvas id="bgCanvas"></canvas>
+    <!-- Canvas del background -->
+    <canvas id="bgCanvas"></canvas>
 
     <div class="content">
-    <pre style="text-align:center;color:white;">
+        <pre style="text-align:center;color:white;">
 ░██     ░██                          ░██████░██                       ░███                                              
 ░██     ░██                            ░██  ░██                      ░██░██                                             
 ░██     ░██  ░███████  ░██    ░██      ░██  ░██ ░█████████████      ░██  ░██   ░███████  ░██░████ ░██    ░██ ░██    ░██ 
@@ -183,104 +188,163 @@
                                                                                                                         
     </pre>
 
-    <!-- TITULO Y PERFIL -->
-    <h3 style="font-family: 'JetBrains Mono', monospace; font-weight: 400;">
-      <span style="color:#f31313;">>_</span> Pentester &nbsp;&nbsp;
-      <span style="color:#dd5100;">⛨</span> Red Team &nbsp;&nbsp;
-      <span style="color:#6932ff;"><></span> Developer
-    </h3>
+        <!-- TITULO Y PERFIL -->
+        <h3 style="font-family: 'JetBrains Mono', monospace; font-weight: 400;">
+            <span style="color:#f31313;">>_</span> Pentester &nbsp;&nbsp;
+            <span style="color:#dd5100;">⛨</span> Red Team &nbsp;&nbsp;
+            <span style="color:#6932ff;">
+                <>
+            </span> Developer
+        </h3>
 
-    <!-- DESCRIPCIÓN -->
-    <div class="description">
-      Focused on pentesting and developing tools to identify and fix security vulnerabilities. Passionate about building
-      efficient, reliable solutions for cybersecurity challenges, exploring new attack surfaces, analyzing complex
-      systems, and continuously improving defensive strategies to protect critical assets in dynamic environments.
+        <!-- DESCRIPCIÓN -->
+        <div class="description">
+            Focused on pentesting and developing tools to identify and fix security vulnerabilities. Passionate about
+            building
+            efficient, reliable solutions for cybersecurity challenges, exploring new attack surfaces, analyzing complex
+            systems, and continuously improving defensive strategies to protect critical assets in dynamic environments.
+        </div>
+
+        <br>
+
+        <!-- BOTONES -->
+        <div class="buttons">
+            <a href="https://github.com/acruxsoutherncross" class="button projects-btn">
+                View My Projects
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                </svg>
+            </a>
+
+            <a href="blog.html" class="button blog-btn">
+                Read My Blog
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                </svg>
+            </a>
+        </div>
+
+        <!-- GIF -->
+        <img src="https://i.pinimg.com/originals/d9/18/dd/d918ddd088942a4b4c3c58ff5371bc2f.gif" alt="Portfolio GIF">
+
+        <!-- ICONOS -->
+        <div class="icons">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/debian/debian-original.svg"
+                alt="Debian">
+            <img src="https://cdn.simpleicons.org/kalilinux/557C94" alt="Kali Linux">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
+                alt="Java">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
+                alt="Python">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg"
+                alt="GitHub">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg"
+                alt="VS Code">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt="Git">
+            <img src="https://cdn.simpleicons.org/ubuntu/557C94" alt="Ubuntu">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/archlinux/archlinux-original.svg"
+                alt="Arch Linux">
+        </div>
+        <footer>
+            © 2026 ACRUX | All rights reserved
+        </footer>
     </div>
 
-    <br>
+    <!-- JAVASCRIPT DEL BACKGROUND -->
+    <script>
+        const canvas = document.getElementById("bgCanvas");
+        const ctx = canvas.getContext("2d");
 
-    <!-- BOTONES -->
-    <div class="buttons">
-      <a href="https://github.com/acruxsoutherncross" class="button projects-btn">
-        View My Projects
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path d="M5 12h14" />
-          <path d="m12 5 7 7-7 7" />
-        </svg>
-      </a>
+        let particles = [];
+        const mouse = { x: null, y: null };
 
-      <a href="blog.html" class="button blog-btn">
-        Read My Blog
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path d="M5 12h14" />
-          <path d="m12 5 7 7-7 7" />
-        </svg>
-      </a>
-    </div>
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener("resize", resize);
 
-    <!-- GIF -->
-    <img src="https://i.pinimg.com/originals/b1/5b/d5/b15bd596014d9d9310e59b07b85da550.gif" alt="Portfolio GIF">
+        // Mouse tracking
+        window.addEventListener("mousemove", (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
 
-    <!-- ICONOS -->
-    <div class="icons">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/debian/debian-original.svg" alt="Debian">
-      <img src="https://cdn.simpleicons.org/kalilinux/557C94" alt="Kali Linux">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="Java">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" alt="GitHub">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" alt="VS Code">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt="Git">
-      <img src="https://cdn.simpleicons.org/ubuntu/557C94" alt="Ubuntu">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/archlinux/archlinux-original.svg" alt="Arch Linux">
-    </div>
-    <footer>
-      © 2026 ACRUX | All rights reserved
-    </footer>
-  </div>
+        // Crear partículas
+        function init() {
+            particles = [];
+            for (let i = 0; i < 120; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: Math.random() * 1 - 0.5,
+                    vy: Math.random() * 1 - 0.5
+                });
+            }
+        }
 
-  <!-- JAVASCRIPT DEL BACKGROUND -->
-  <script>
-    const canvas = document.getElementById("bgCanvas");
-    const ctx = canvas.getContext("2d");
+        // Dibujar líneas entre partículas
+        function connect() {
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a; b < particles.length; b++) {
+                    let dx = particles[a].x - particles[b].x;
+                    let dy = particles[a].y - particles[b].y;
+                    let dist = dx * dx + dy * dy;
 
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
+                    if (dist < 10000) {
+                        ctx.strokeStyle = "rgba(255,255,255,0.08)";
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
 
-    resize();
-    window.addEventListener("resize", resize);
+                // Conexión con el mouse
+                let dx = particles[a].x - mouse.x;
+                let dy = particles[a].y - mouse.y;
+                let dist = dx * dx + dy * dy;
 
-    const particles = Array.from({ length: 160 }).map(() => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      size: Math.random() * 2 + 0.5,
-      speedY: Math.random() * 0.7 + 0.2,
-      speedX: Math.random() * 0.3 - 0.15,
-      color: "#fff"
-    }));
+                if (dist < 15000) {
+                    ctx.strokeStyle = "rgba(255,255,255,0.2)";
+                    ctx.beginPath();
+                    ctx.moveTo(particles[a].x, particles[a].y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    ctx.stroke();
+                }
+            }
+        }
 
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Animación
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      particles.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
-        ctx.fill();
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
 
-        p.y += p.speedY;
-        p.x += p.speedX;
+                // rebote
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
-        if (p.y > canvas.height) p.y = -5;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.x < 0) p.x = canvas.width;
-      });
+                // dibujar punto
+                ctx.fillStyle = "#ffffff";
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+                ctx.fill();
+            });
 
-      requestAnimationFrame(draw);
-    }
+            connect();
+            requestAnimationFrame(animate);
+        }
 
-    draw();
-  </script>
+        init();
+        animate();
+    </script>
 </body>
+
 </html>
