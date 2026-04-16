@@ -4,180 +4,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACRUX Blog</title>
+    <title>h1gu | Blog</title>
+    <link rel="icon" href="https://i.pinimg.com/736x/d0/3e/58/d03e58463d353fee6ba14b88ee6d1e3b.jpg" type="image/png">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --bg: #0a0a0a;
+            --card-bg: rgba(18, 18, 18, 0.8);
+            --border: rgba(255, 255, 255, 0.05);
+            --accent: #7c3aed;
+            --text-main: #e5e5e5;
+            --text-dim: #888;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Inter', sans-serif;
+        }
+
         body {
             margin: 0;
+            background-color: var(--bg);
+            font-family: var(--font-sans);
+            color: var(--text-main);
             overflow-x: hidden;
-            background: radial-gradient(circle at top, #1a1a1a, #0d0d0d);
-            font-family: 'JetBrains Mono', monospace;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            line-height: 1.6;
         }
 
-        /* CONTENIDO */
-        .content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem;
-            gap: 2rem;
-            flex: 1;
-        }
-
-         /* BOTONES */
-        .buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-
-        .button {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            border-radius: 0.3rem;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            border: none;
-        }
-
-        .blog-btn {
-            background-color: transparent;
-            color: #bbbbbb;
-            border: 2px solid #bbdbbb;
-        }
-
-        .blog-btn:hover {
-            border-color: #6b7280;
-        }
-
-        .button svg {
-            width: 16px;
-            height: 16px;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        /* LOGO */
-        img {
-            max-width: 420px;
-            width: 90%;
-            filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.4));
-        }
-
-        /* GRID */
-        .blog-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            width: 100%;
-            max-width: 1100px;
-        }
-
-        /* CARD PRO */
-        .post-card {
-            background: rgba(20, 20, 20, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(124, 58, 237, 0.2);
-            border-radius: 0.8rem;
-            padding: 1.2rem;
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Glow animado */
-        .post-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(120deg, transparent, rgba(124, 58, 237, 0.3), transparent);
-            opacity: 0;
-            transition: 0.4s;
-        }
-
-        .post-card:hover::before {
-            opacity: 1;
-        }
-
-        /* Hover brutal */
-        .post-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: #7c3aed;
-            box-shadow: 0 0 25px rgba(124, 58, 237, 0.4);
-        }
-
-        /* TEXTOS */
-        .post-card h2 {
-            font-family: 'Orbitron';
-            font-size: 1.2rem;
-        }
-
-        .post-card p {
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-
-        /* BOTÓN CARD */
-        .post-card a {
-            margin-top: 1rem;
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            border-radius: 0.3rem;
-            background: #7c3aed;
-            text-decoration: none;
-            color: white;
-            transition: 0.3s;
-        }
-
-        .post-card a:hover {
-            box-shadow: 0 0 10px #7c3aed;
-        }
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #555;
-            padding: 1rem;
-        }
-
-        /* CANVAS */
+        /* CANVAS BACKGROUND */
         #bgCanvas {
             position: fixed;
             top: 0;
             left: 0;
             z-index: 0;
+            opacity: 0.4;
         }
 
-        /* EFECTO GLOW GLOBAL */
-        body::after {
-            content: "";
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(124, 58, 237, 0.15), transparent 70%);
-            top: -200px;
-            left: -200px;
-            z-index: 0;
+        .content {
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
+
+        /* HEADER / LOGO */
+        .logo-container {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .logo-container img {
+            max-width: 320px;
+            width: 100%;
+        }
+
+        .logo-container img:hover {
+            filter: grayscale(0) drop-shadow(0 0 15px rgba(124, 58, 237, 0.3));
+        }
+
+        /* BLOG GRID */
+        .blog-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        /* POST CARD - MINIMALIST TECH */
+        .post-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px; /* Bordes menos redondeados */
+            padding: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .post-card:hover {
+            border-color: var(--accent);
+            background: rgba(124, 58, 237, 0.03);
+            transform: translateY(-4px);
+        }
+
+        .post-card h2 {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            margin: 0 0 1rem 0;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            color: #fff;
+        }
+
+        .post-card p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        /* MINI LINK */
+        .post-card a {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+        }
+
+        .post-card a:hover {
+            gap: 0.8rem;
+            color: #fff;
+        }
+
+        /* NAVIGATION BUTTON */
+        .nav-footer {
+            margin-top: 4rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-home {
+            font-family: var(--font-mono);
+            color: var(--text-dim);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            padding: 0.6rem 1.2rem;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.3s;
+        }
+
+        .btn-home:hover {
+            color: #fff;
+            border-color: #fff;
+            background: rgba(255,255,255,0.05);
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 2rem;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: #444;
+            letter-spacing: 2px;
+        }
+
+        /* Scrollbar minimalista */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #222; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
     </style>
 </head>
 
@@ -186,48 +176,53 @@
     <canvas id="bgCanvas"></canvas>
 
     <div class="content">
+        <header class="logo-container">
+            <img src="https://i.pinimg.com/originals/d9/18/dd/d918ddd088942a4b4c3c58ff5371bc2f.gif" alt=" Logo">
+        </header>
 
-        <img src="https://i.pinimg.com/originals/57/4a/4b/574a4b7be133e794edab2b0da7355ac0.gif">
-
-        <div class="blog-container">
-
+        <main class="blog-container">
             <div class="post-card">
-                <h2>Practica de blog</h2>
-                <p>Practica de blog (ya creado bruhhh....)</p>
-                <a href="#">Read More</a>
+                <div>
+                    <h2>01. Practica de blog</h2>
+                    <p>Documentación inicial sobre la estructura del framework y despliegue del entorno.</p>
+                </div>
+                <a href="#">Read_Source <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             </div>
 
             <div class="post-card">
-                <h2>Red Team Tools</h2>
-                <p>Custom tools for stealth and automation.</p>
-                <a href="#">Read More</a>
+                <div>
+                    <h2>02. Red Team Tools</h2>
+                    <p>Análisis de herramientas personalizadas para evasión de EDR y automatización C2.</p>
+                </div>
+                <a href="#">Read_Source <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             </div>
 
             <div class="post-card">
-                <h2>Python Exploits</h2>
-                <p>Real-world scripts and offensive techniques.</p>
-                <a href="#">Read More</a>
+                <div>
+                    <h2>03. Python Exploits</h2>
+                    <p>Desarrollo de scripts ofensivos eficientes utilizando librerías nativas.</p>
+                </div>
+                <a href="#">Read_Source <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             </div>
 
             <div class="post-card">
-                <h2>Rust Security</h2>
-                <p>Fast and safe offensive tooling.</p>
-                <a href="#">Read More</a>
+                <div>
+                    <h2>04. Rust Security</h2>
+                    <p>Implementación de payloads seguros y manejo de memoria en desarrollo ofensivo.</p>
+                </div>
+                <a href="#">Read_Source <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             </div>
+        </main>
 
-        </div>
-
-        <a href="index.html" class="button blog-btn">
-            home
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-            </svg>
-        </a>
-
+        <nav class="nav-footer">
+            <a href="index.html" class="btn-home">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                RETURN_HOME
+            </a>
+        </nav>
     </div>
 
-    <footer>© 2026 ACRUX | All rights reserved</footer>
+    <footer>© 2026 h1guruma // TERMINAL_ACCESS_GRANTED</footer>
 
     <script>
         const canvas = document.getElementById("bgCanvas");
@@ -321,7 +316,5 @@
         init();
         animate();
     </script>
-
 </body>
-
 </html>
